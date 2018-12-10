@@ -1,0 +1,14 @@
+{
+    "name": "ryan/rb_backend",
+    "authors": [
+        {
+            "name": "Ryan Cobelli",
+            "email": "ryan.cobelli@rybel-llc.com"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "^1.7",
+        "google/apiclient": "^2.2",
+        "setasign/fpdf": "^1.8"
+    }
+}
