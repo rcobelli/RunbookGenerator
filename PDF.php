@@ -39,8 +39,10 @@ protected $HREF;
 protected $fontList;
 protected $issetfont;
 protected $issetcolor;
+protected $revision;
+protected $title;
 
-function __construct($orientation='P', $unit='mm', $format='A4')
+function __construct($orientation='P', $unit='mm', $format='A4', $rev=1, $title="Example Title")
 {
     //Call parent constructor
     parent::__construct($orientation,$unit,$format);
@@ -52,6 +54,8 @@ function __construct($orientation='P', $unit='mm', $format='A4')
     $this->fontlist=array('arial', 'times', 'courier', 'helvetica', 'symbol');
     $this->issetfont=false;
     $this->issetcolor=false;
+    $this->revision=$rev;
+    $this->title=$title;
 }
 
 function WriteHTML($html)
@@ -192,11 +196,11 @@ function Header()
     // Logo
     $this->Image('logo.png',10,6,15);
     // Arial bold 15
-    $this->SetFont('Arial','B',15);
+    $this->SetFont('Arial','',25);
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(30,10,'Example Title',0,0,'C');
+    $this->Cell(30,10,$this->title,0,0,'C');
     // Line break
     $this->Ln(20);
 }
@@ -209,8 +213,8 @@ function Footer()
     // Arial italic 8
     $this->SetFont('Arial','I',8);
     // Page number
-    $this->Cell(100,10,'Revision X - Page '.$this->PageNo().'/{nb}',0,0,'L');
-    $this->Cell(0,10,'Created with Runbook Generator',0,0,'R');
+    $this->Cell(100,10,'Revision ' . $this->revision . ' - Page '.$this->PageNo().'/{nb}',0,0,'L');
+    $this->Cell(0,10,'Created with Runbook Generator',0,0,'R',false,'https://runbook.rybel-llc.com');
 }
 
 }//end of class

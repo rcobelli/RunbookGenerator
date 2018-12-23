@@ -4,11 +4,12 @@
 $ini = parse_ini_file("../config.ini", true)["rb"];
 
 require_once("vendor/autoload.php");
+require('PDF.php');
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(-1);
-// error_reporting(0);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(-1);
+error_reporting(0);
 
 $conn = mysqli_connect("76.97.57.153", $ini['db_user'], $ini['db_password'], "RunbookGenerator");
 if (mysqli_connect_errno()) {
