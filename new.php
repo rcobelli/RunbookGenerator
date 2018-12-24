@@ -18,7 +18,7 @@ if ($_POST['submit']) {
         $last_id = $conn->insert_id;
         $sql = "INSERT INTO revisions (runbookID, revisionID, timestamp, data, changelog) VALUES ($last_id, 1, NOW(), '$data', 'Initial entry')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: dashboard.php");
+            header("Location: dashboard.php?status=success");
         } else {
             ?>
             <div class="alert alert-danger" role="alert">
@@ -64,6 +64,7 @@ if ($_POST['submit']) {
             <div class="form-group">
                 <label>Content<small> (Markdown Format)</small>:</label><textarea name="data" class="form-control" style="height: 300px" required></textarea>
             </div>
+            <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

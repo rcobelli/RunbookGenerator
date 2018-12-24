@@ -53,10 +53,10 @@ if (isset($_GET['rev'])) {
 
 $Parsedown = new Parsedown();
 
-// Instanciation of inherited class
-$pdf = new PDF_HTML('P', 'mm', 'Letter', $row['revisionID'], $title);
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Times','',12);
-$pdf->WriteHTML($Parsedown->text($row['data']));
-$pdf->Output();
+echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">';
+echo '<h1 class="text-center">' . $title . ' Runbook</h1>';
+echo $Parsedown->text($row['data']);
+echo '<br clear="all"/>';
+echo '<i><span style="float: right;">Revision ' . $row['revisionID'] . '</span>';
+echo 'Created with Runbook Generator</i>';
+echo '<script>alert ("Select \'Print to PDF\' from the printer dialog");window.print();</script>';

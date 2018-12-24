@@ -29,17 +29,6 @@ if (empty($_SESSION['email'])) {
     </style>
 </head>
 <body>
-    <?php
-    if ($_GET['status'] == 'error') {
-        if ($_GET['message'] == 'invalid_id') {
-            ?>
-            <div class="alert alert-danger" role="alert">
-                Invalid runbook id
-            </div>
-            <?php
-        }
-    }
-    ?>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="logout.php">Logout</a></li>
@@ -47,9 +36,36 @@ if (empty($_SESSION['email'])) {
     </nav>
 
     <div class="container">
+
+        <?php
+        if ($_GET['status'] == 'error') {
+            if ($_GET['message'] == 'invalid_id') {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    Invalid runbook id
+                </div>
+                <?php
+            }
+        } else if ($_GET['status'] == 'success') {
+            if ($_GET['message'] == 'create') {
+                ?>
+                <div class="alert alert-success" role="alert">
+                    Successfully created runbook
+                </div>
+                <?php
+            } else if ($_GET['message'] == 'delete') {
+                ?>
+                <div class="alert alert-success" role="alert">
+                    Successfully deleted runbook
+                </div>
+                <?php
+            }
+        }
+        ?>
+
         <h1>Runbooks</h1>
         <?php
-        $sql = "SELECT * FROM runbooks WHERE user = '" . steralizeString($_SESSION['email']) . "'";
+        $sql = "SELECT * FROM runbooks WHERE user = '" . steralizeString($_SESSION['email']) . "' ORDER BY title";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             ?>

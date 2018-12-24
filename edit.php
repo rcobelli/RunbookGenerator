@@ -86,6 +86,7 @@ if ($result->num_rows > 0) {
             </div>
             <input type="hidden" value="<?php echo $row['revisionID']; ?>" name="revisionID">
             <input type="hidden" value="<?php echo $row['runbookID']; ?>" name="runbookID">
+            <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

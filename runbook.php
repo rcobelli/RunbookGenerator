@@ -84,7 +84,7 @@ if (isset($_GET['rev'])) {
         <div class="float-right">
             <h4 title="<?php echo $row['changelog']; ?>" class="text-right">Revision <?php echo $row['revisionID']; ?></h4>
 
-            <a href="download.php?id=<?php echo $id; ?>&rev=<?php echo $rev; ?>"><button type="button" class="btn btn-primary">Download PDF</button></a>
+            <a href="download.php?id=<?php echo $id; ?>&rev=<?php echo $rev; ?>" target="_blank"><button type="button" class="btn btn-primary">Download PDF</button></a>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#manageRevisions" aria-expanded="false" aria-controls="collapseExample">
                 Manage Revisions
             </button>
@@ -117,7 +117,8 @@ if (isset($_GET['rev'])) {
                                 } ?>
                             </tbody>
                         </table>
-                        <a href="edit.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-primary">New Revision</button></a>
+                        <a href="edit.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-success mb-3">New Revision</button></a>
+                        <a href="delete.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-danger">Delete Runbook</button></a>
                         <?php
                     }
                 ?>

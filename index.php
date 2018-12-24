@@ -13,6 +13,11 @@ $client->addScope("email profile");
 $client->setRedirectUri('https://runbook.rybel-llc.com/login.php');
 $auth_url = $client->createAuthUrl();
 
+if (!empty($_SESSION['email'])) {
+    header("Location: dashboard.php");
+    die();
+}
+
 ?>
 <html>
 <head>
