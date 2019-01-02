@@ -16,7 +16,7 @@ $id = steralizeString($_GET['id']);
 
 $sql = "DELETE FROM runbooks WHERE id = $id";
 $sql2 = "DELETE FROM revisions WHERE runbookID = $id";
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+if ($conn->query($sql) === true && $conn->query($sql2) === true) {
     header("Location: dashboard.php?status=success&message=delete");
     die();
 } else {

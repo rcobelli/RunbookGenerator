@@ -24,7 +24,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Steralize input (remove crazy characters)
-function steralizeString($str) {
+function steralizeString($str)
+{
     global $conn;
     return mysqli_real_escape_string($conn, $str);
 }
