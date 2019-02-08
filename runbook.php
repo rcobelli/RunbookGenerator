@@ -137,8 +137,8 @@ if (isset($_GET['rev'])) {
         <hr/>
         <div class="bg-light p-3">
             <?php
-            $Parsedown = new Parsedown();
-            echo $Parsedown->text($row['data']);
+            $parser = new \cebe\markdown\GithubMarkdown();
+            echo $parser->parse($row['data']);
             ?>
         </div>
     </div>
