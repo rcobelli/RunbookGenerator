@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "erusev/parsedown": "^1.7",
+        "cebe/markdown": "~1.2.0",
         "google/apiclient": "^2.2"
     }
 }
