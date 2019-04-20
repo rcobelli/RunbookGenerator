@@ -97,6 +97,7 @@ if ($result->num_rows > 0) {
             <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf" target="_blank">Markdown Cheatsheet</a>
     </div>
 </body>
 </html>
