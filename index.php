@@ -2,19 +2,35 @@
 
 include_once("init.php");
 
-// echo 'http://' . $_SERVER['HTTP_HOST'] . '~ryan/rb/rb_backend/login.php';
-
-$client = new Google_Client();
-$client->setAuthConfig('client_secret.json');
-$client->setAccessType("offline");        // offline access
-$client->setIncludeGrantedScopes(true);
-$client->addScope("email profile");
-$client->setRedirectUri('https://dev.rybel-llc.com/runbook/login.php');
-$auth_url = $client->createAuthUrl();
-
 if (!empty($_SESSION['email'])) {
     header("Location: dashboard.php");
     die();
+}
+
+if (isset($_GET['code'])) {
+    include_once("login.php");
+} elseif (isset($_COOKIE['runbook'])) {
+    $data = json_decode($_COOKIE['runbook']);
+    $_SESSION['name'] = $data->name;
+    $_SESSION['email'] = $data->email;
+
+    header("Location: dashboard.php");
+    die();
+} else {
+    $client = new Google_Client();
+    $client->setAuthConfig('../rb-client_secret.json');
+    $client->setAccessType("offline");        // offline access
+    $client->setIncludeGrantedScopes(true);
+    $client->addScope("profile");
+    if (isset($_GET['email'])) {
+        $client->setLoginHint(urldecode($_GET['email']));
+    }
+    if (devEnv()) {
+        $client->setRedirectUri('http://localhost/~ryan/rb/rb_backend/index.php');
+    } else {
+        $client->setRedirectUri('https://dev.rybel-llc.com/runbook/index.php');
+    }
+    $auth_url = $client->createAuthUrl();
 }
 
 ?>
