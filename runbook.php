@@ -107,7 +107,10 @@ if (isset($_GET['rev'])) {
         <div class="collapse mt-2" id="manageRevisions">
             <div class="card card-body">
                 <?php
-                    $sql = "SELECT * FROM revisions WHERE runbookID = " . $id . " ORDER BY revisionID";
+                    $sql = "SELECT * FROM revisions WHERE runbookID = " . $id . " ORDER BY revisionID DESC";
+                    if ($_GET['showAll'] != 'true') {
+                        $sql .= " LIMIT 10";
+                    }
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         ?>
@@ -125,6 +128,12 @@ if (isset($_GET['rev'])) {
                                 } ?>
                             </tbody>
                         </table>
+                        <?php
+                        if ($_GET['showAll'] != 'true'):
+                        ?>
+                        <a href="?id=<?php echo $id; ?>&showAll=true"><button type="button" class="btn btn-secondary mb-3">Show All Revisions</button></a>
+                        <?php
+                        endif; ?>
                         <a href="edit.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-success mb-3">New Revision</button></a>
                         <a href="delete.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-danger">Delete Runbook</button></a>
                         <?php
