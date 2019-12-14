@@ -1,7 +1,7 @@
 <?php
 
 // Get sensitive values
-$ini = parse_ini_file("../config.ini", true)["rb"];
+$ini = parse_ini_file("config.ini", true)["rb"];
 
 require_once("vendor/autoload.php");
 
