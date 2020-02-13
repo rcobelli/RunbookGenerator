@@ -35,3 +35,13 @@ function devEnv()
 {
     return gethostname() == "Ryans-MBP";
 }
+
+function getURL() {
+    global $ini;
+
+    if (devEnv()) {
+        return $ini['dev_link'];
+    } else {
+        return $ini['link'];
+    }
+}
