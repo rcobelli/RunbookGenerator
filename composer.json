@@ -8,6 +8,7 @@
     ],
     "require": {
         "cebe/markdown": "~1.2.0",
-        "google/apiclient": "^2.2"
+        "google/apiclient": "^2.2",
+        "ext-json": "*"
     }
 }
