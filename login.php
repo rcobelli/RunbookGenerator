@@ -4,14 +4,19 @@ if (isset($_GET['error'])) {
     exit($_GET);
 }
 
-$client = new Google_Client();
-$client->setAuthConfig('client_secret.json');
-$client->setAccessType("offline");        // offline access
-$client->setIncludeGrantedScopes(true);
-$client->setRedirectUri(getURL() . 'index.php');
-$client->authenticate($_GET['code']);
-$access_token = $client->getAccessToken();
-$_SESSION['access_token'] = $access_token['access_token'];
+try {
+    $client = new Google_Client();
+    $client->setAuthConfig('client_secret.json');
+    $client->setAccessType("offline");        // offline access
+    $client->setIncludeGrantedScopes(true);
+    $client->setRedirectUri(getURL() . 'index.php');
+    $client->authenticate($_GET['code']);
+    $access_token = $client->getAccessToken();
+    $_SESSION['access_token'] = $access_token['access_token'];
+} catch (Google_Exception $e) {
+    exit($e);
+}
+
 
 
 $plus = new Google_Service_Oauth2($client);

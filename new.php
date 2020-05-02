@@ -38,7 +38,7 @@ if ($_POST['submit']) {
 }
 
 ?>
-<html>
+<html lang="en">
 <head>
     <title>Runbook Generator | New Runbook</title>
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -67,10 +67,10 @@ if ($_POST['submit']) {
 
         <form method="post">
             <div class="form-group">
-                <label>Title:</label><input name="title" type="text" class="form-control" required>
+                <label>Title:<input name="title" type="text" class="form-control" required></label>
             </div>
             <div class="form-group">
-                <label>Content<small> (Markdown Format)</small>:</label><textarea name="data" class="form-control" style="height: 300px" required></textarea>
+                <label>Content<small> (Markdown Format)</small>:<textarea name="data" class="form-control" style="height: 300px" required></textarea></label>
             </div>
             <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>

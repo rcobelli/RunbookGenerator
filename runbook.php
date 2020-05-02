@@ -1,5 +1,7 @@
 <?php
 
+use cebe\markdown\GithubMarkdown;
+
 include_once("init.php");
 
 if (empty($_SESSION['email'])) {
@@ -52,7 +54,7 @@ if (isset($_GET['rev'])) {
 }
 
 ?>
-<html>
+<html lang="en">
 <head>
     <title>Runbook Generator | <?php echo $title; ?></title>
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -146,7 +148,7 @@ if (isset($_GET['rev'])) {
         <hr/>
         <div class="bg-light p-3">
             <?php
-            $parser = new \cebe\markdown\GithubMarkdown();
+            $parser = new GithubMarkdown();
             echo $parser->parse($row['data']);
             ?>
         </div>

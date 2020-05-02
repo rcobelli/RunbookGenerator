@@ -1,5 +1,7 @@
 <?php
 
+use cebe\markdown\GithubMarkdown;
+
 include_once("init.php");
 
 // if (empty($_SESSION['email'])) {
@@ -51,7 +53,7 @@ if (isset($_GET['rev'])) {
     }
 }
 
-$parser = new \cebe\markdown\GithubMarkdown();
+$parser = new GithubMarkdown();
 
 
 echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">';

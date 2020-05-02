@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
 }
 
 ?>
-<html>
+<html lang="en">
 <head>
     <title>Runbook Generator | Edit Runbook</title>
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -87,17 +87,17 @@ if ($result->num_rows > 0) {
 
         <form method="post">
             <div class="form-group">
-                <label>Content<small> (Markdown Format)</small>:</label><textarea name="data" required class="form-control" style="height: 300px"><?php echo $row['data']; ?></textarea>
+                <label>Content<small> (Markdown Format)</small>:<textarea name="data" required class="form-control" style="height: 300px"><?php echo $row['data']; ?></textarea></label>
             </div>
             <div class="form-group">
-                <label>Change Log:</label><input type="text" name="changelog" required class="form-control">
+                <label>Change Log:<input type="text" name="changelog" required class="form-control"></label>
             </div>
             <input type="hidden" value="<?php echo $row['revisionID']; ?>" name="revisionID">
             <input type="hidden" value="<?php echo $row['runbookID']; ?>" name="runbookID">
             <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf" target="_blank">Markdown Cheatsheet</a>
+        <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf" target="_blank">Markdown Cheat Sheet</a>
     </div>
 </body>
 </html>

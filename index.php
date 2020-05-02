@@ -17,16 +17,20 @@ if (isset($_GET['code'])) {
     header("Location: dashboard.php");
     die();
 } else {
-    $client = new Google_Client();
-    $client->setAuthConfig('client_secret.json');
-    $client->setAccessType("offline");        // offline access
-    $client->setIncludeGrantedScopes(true);
-    $client->addScope("profile");
-    if (isset($_GET['email'])) {
-        $client->setLoginHint(urldecode($_GET['email']));
+    try {
+        $client = new Google_Client();
+        $client->setAuthConfig('client_secret.json');
+        $client->setAccessType("offline");        // offline access
+        $client->setIncludeGrantedScopes(true);
+        $client->addScope("profile");
+        if (isset($_GET['email'])) {
+            $client->setLoginHint(urldecode($_GET['email']));
+        }
+        $client->setRedirectUri(getURL() . 'index.php');
+        $auth_url = $client->createAuthUrl();
+    } catch (Google_Exception $e) {
+        exit($e);
     }
-    $client->setRedirectUri(getURL() . 'index.php');
-    $auth_url = $client->createAuthUrl();
 }
 
 ?>
@@ -37,7 +41,6 @@ if (isset($_GET['code'])) {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#24273a">
     <link rel="shortcut icon" href="/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#24273a">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
@@ -58,7 +61,7 @@ if (isset($_GET['code'])) {
     <div class="container d-flex h-100 p-3 mx-auto flex-column">
         <header class="mb-3">
             <div class="inner">
-                <img src="assets/icon.png" height="100px" style="float: left;" class="mr-5">
+                <img src="assets/icon.png" height="100px" style="float: left;" class="mr-5" alt="">
                 <h1 style="line-height: 100px; text-align: left;">Runbook Generator</h1>
             </div>
         </header>
@@ -74,7 +77,7 @@ if (isset($_GET['code'])) {
         <main role="main" class="inner mt-5">
             <h3 class="cover-heading">Example</h3>
             <p class="lead">You can download any revision of your runbook as a PDF. Below is an example</p>
-            <img src="assets/example.png" height="1000px;" class="mb-3 border border-secondary">
+            <img src="assets/example.png" height="1000px;" class="mb-3 border border-secondary" alt="">
         </main>
     </div>
 </body>
