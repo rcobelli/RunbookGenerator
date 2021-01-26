@@ -67,10 +67,10 @@ if ($_POST['submit']) {
 
         <form method="post">
             <div class="form-group">
-                <label>Title:<input name="title" type="text" class="form-control" required></label>
+                <label>Title:</label><input name="title" type="text" class="form-control" required>
             </div>
             <div class="form-group">
-                <label>Content<small> (Markdown Format)</small>:<textarea name="data" class="form-control" style="height: 300px" required></textarea></label>
+                <label>Content<small> (Markdown Format)</small>:</label><textarea name="data" class="form-control" style="height: 300px" required></textarea>
             </div>
             <input type="hidden" name="submit" value="true">
             <button type="submit" class="btn btn-primary">Submit</button>
