@@ -87,10 +87,10 @@ if ($result->num_rows > 0) {
 
         <form method="post">
             <div class="form-group">
-                <label>Content<small> (Markdown Format)</small>:<textarea name="data" required class="form-control" style="height: 300px"><?php echo $row['data']; ?></textarea></label>
+                <label>Content<small> (Markdown Format)</small>:</label><textarea name="data" required class="form-control" style="height: 300px"><?php echo $row['data']; ?></textarea>
             </div>
             <div class="form-group">
-                <label>Change Log:<input type="text" name="changelog" required class="form-control"></label>
+                <label>Change Log:</label><input type="text" name="changelog" required class="form-control">
             </div>
             <input type="hidden" value="<?php echo $row['revisionID']; ?>" name="revisionID">
             <input type="hidden" value="<?php echo $row['runbookID']; ?>" name="runbookID">
